@@ -13,10 +13,10 @@ migrate = Migrate(app, db)
 def form():
     return render_template('form.html')
 
-@app.route('/your_short_url', methods = ['POST', 'GET'])
+@app.route('/your_short_url', methods = ['POST'])
 def short_url():
-    if request.method == 'GET':
-        return 'Get it via the url form'
+    # if request.method == 'GET':
+    #     return 'Get it via the url form'
 
     if request.method == 'POST':
         long_url = request.form['long_url']
@@ -48,3 +48,7 @@ def redirect_to_url(slug):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+# si le slug est vide on génère un slug aléatoire
+# si le random slug est deja dans la db, relancer random slug
+# si short_url = your_short_url
