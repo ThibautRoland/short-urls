@@ -56,7 +56,7 @@ def random_string():
 @app.route('/<slug>')
 def redirect_to_url(slug):
     web_page = WebPage.query.filter_by(short_url="localhost:5000/" + slug).first()
-    # return f'{short_url} is here to make some noise!'
+    # return f'{short_url} is here!'
     if web_page:
         url = web_page.long_url
         print(url)
