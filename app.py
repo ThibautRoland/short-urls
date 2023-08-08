@@ -64,6 +64,6 @@ def redirect_to_url(slug):
 if __name__ == '__main__':
     app.run(debug=True)
 
-# si le slug est vide on génère un slug aléatoire
+# si le slug est vide on génère un slug aléatoire /done
 # si le random slug est deja dans la db, relancer random slug
-# si short_url = your_short_url
+# si short_url == your_short_url /done
