@@ -1,6 +1,8 @@
 from flask import Flask,render_template,request,redirect
 from flask_migrate import Migrate
 from models import db, WebPage
+import string
+import random
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://titi:password@localhost:5432/short_urls_db"
@@ -27,12 +29,25 @@ def short_url():
 
         slug = request.form['short_url']
         print(slug)
+        if slug == '':
+            slug = random_string()
+
         short_url = 'localhost:5000/' + slug
         print(short_url)
         new_web_page = WebPage(long_url=long_url, short_url=short_url)
         db.session.add(new_web_page)
         db.session.commit()
         return f'Done!! Your_short_url is {short_url}'
+
+def random_string():
+    characters = string.ascii_letters + string.digits
+    str = ""
+    length = random.choice(range(6, 12))
+    print(length)
+    for i in range(length):
+        str += random.choice(characters)
+    print(str)
+    return str
 
 @app.route('/<slug>')
 def redirect_to_url(slug):
