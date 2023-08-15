@@ -43,7 +43,7 @@ def short_url():
         db.session.commit()
         return f'Done!! Your_short_url is {short_url}'
 
-def random_string():
+def get_random_slug():
     characters = string.ascii_letters + string.digits
     str = ""
     length = random.choice(range(6, 12))
@@ -71,3 +71,5 @@ if __name__ == '__main__':
 # si le slug est vide on génère un slug aléatoire /done
 # si le random slug est deja dans la db, relancer random slug
 # si short_url == your_short_url /done
+
+# à la place des prints utiliser des loggers
